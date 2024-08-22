@@ -17,6 +17,7 @@ public class SessaoDAO {
             PreparedStatement st = con.prepareStatement(sql);
             ResultSet result = st.executeQuery();
             while (result.next()) {
+
                 FilmeModel f = filmes.get(result.getString("filme"));
                 SessaoModel sessao = new SessaoModel(result.getInt("id"), f, result.getInt("hora"),
                         result.getInt("minuto"), result.getInt("sala_id"),

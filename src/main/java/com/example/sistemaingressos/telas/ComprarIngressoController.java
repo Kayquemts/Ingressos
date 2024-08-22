@@ -46,6 +46,7 @@ public class ComprarIngressoController {
         for (String cadeira: cadeirasSelecionadas) {
             CheckBox btn = new CheckBox("Cadeira " + cadeira);
             btn.setFont(textBig);
+            btn.setStyle("-fx-text-fill: #50a3ab;");
 
             btn.setId(cadeira);
             btn.setOnAction(event -> {
@@ -70,7 +71,8 @@ public class ComprarIngressoController {
         boolean confirm = exibirConfirmar("Finalizar compra", "Deseja finalizar a compra?");
         System.out.println(totalIngressos);
         if (confirm) {
-            VendaModel venda = new VendaModel(cadeirasSelecionadas.size(), LocalDate.now(), cliente.getNome(), totalIngressos);
+            VendaModel venda = new VendaModel(cadeirasSelecionadas.size(), LocalDate.now(), cliente.getCpf(), totalIngressos);
+            System.out.println(venda);
             int vendaId = VendaModel.addVenda(venda);
             ArrayList<IngressoModel> ingressos = new ArrayList<>();
             for (String cadeira: cadeirasSelecionadas) {
@@ -101,12 +103,15 @@ public class ComprarIngressoController {
 
         Label sessaoTexto = new Label("Dados da Sessão");
         sessaoTexto.setFont(textBig);
+        sessaoTexto.setStyle("-fx-text-fill: #50a3ab;");
+
         labels.add(sessaoTexto);
         Label infoTexto = new Label(String.format(
                 "• Filme: %s\n• Sala: %d\n• Horário: %dh%dmin\n", sessaoSelecionada.getStr("filme"),
                 sessaoSelecionada.getSalaId(), sessaoSelecionada.getHora(), sessaoSelecionada.getMinuto()
         ));
         infoTexto.setFont(textSmall);
+        infoTexto.setStyle("-fx-text-fill: #50a3ab;");
         labels.add(infoTexto);
         totalIngressos = 0;
         for (String cadeirasSelecionada : cadeirasSelecionadas) {
@@ -123,12 +128,14 @@ public class ComprarIngressoController {
 
             Label cadeiraTextoNew = new Label(texto);
             cadeiraTextoNew.setFont(textSmall);
+            cadeiraTextoNew.setStyle("-fx-text-fill: #50a3ab;");
             labels.add(cadeiraTextoNew);
 
             totalIngressos += preco + especialPreco;
         }
         Label totalIngressosText = new Label(String.format("Ingressos: %.2f R$", totalIngressos));
         totalIngressosText.setFont(textBig);
+        totalIngressosText.setStyle("-fx-text-fill: #50a3ab;");
         labels.add(2, totalIngressosText);
 
         List<String> combosSelecionados = new ArrayList<>();
@@ -147,10 +154,12 @@ public class ComprarIngressoController {
 
         Label comboLabel = new Label("Combos Selecionados: " + String.join(", ", combosSelecionados));
         comboLabel.setFont(textBig);
+        comboLabel.setStyle("-fx-text-fill: #50a3ab;");
         labels.add(comboLabel);
 
         Label total = new Label("Total: " + String.format("%.2f R$", totalIngressos));
         total.setFont(textBig);
+        total.setStyle("-fx-text-fill: #50a3ab;");
         labels.add(total);
 
         dados.getChildren().addAll(labels);

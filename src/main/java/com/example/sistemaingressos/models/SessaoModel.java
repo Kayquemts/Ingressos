@@ -110,4 +110,17 @@ public class SessaoModel {
             default -> "";
         };
     }
+
+
+    @Override
+    public String toString() {
+        return "SessaoModel{" +
+                "id=" + id +
+                ", filme=" + filme +
+                ", hora=" + hora +
+                ", minuto=" + minuto +
+                ", salaId=" + salaId +
+                ", preco=" + preco +
+                '}';
+    }
 }

@@ -77,6 +77,7 @@ public class FilmeModel {
     }
 
     public ReadOnlyStringWrapper get(String attr) {
+
         String str = getStr(attr);
         return new ReadOnlyStringWrapper(str);
     }
@@ -89,5 +90,15 @@ public class FilmeModel {
             case "duracao" -> this.duracao + "min";
             default -> "";
         };
+    }
+
+    @Override
+    public String toString() {
+        return "FilmeModel{" +
+                "nome='" + nome + '\'' +
+                ", genero='" + genero + '\'' +
+                ", duracao=" + duracao +
+                ", faixaEtaria=" + faixaEtaria +
+                '}';
     }
 }

@@ -1,9 +1,6 @@
 package com.example.sistemaingressos.telas;
 
-import com.example.sistemaingressos.database.FilmeDAO;
-import com.example.sistemaingressos.database.IngressoDAO;
-import com.example.sistemaingressos.database.SessaoDAO;
-import com.example.sistemaingressos.database.VendaDAO;
+import com.example.sistemaingressos.database.*;
 import com.example.sistemaingressos.models.*;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
@@ -26,13 +23,14 @@ import java.util.List;
 import static com.example.sistemaingressos.models.FilmeModel.filmes;
 import static com.example.sistemaingressos.models.SessaoModel.sessoes;
 import static com.example.sistemaingressos.models.SalaModel.salas;
+import static com.example.sistemaingressos.models.ComboModel.combos;
 
 public class AdminController {
-    @FXML 
+    @FXML
     TableView<SessaoModel> tabelaSessoes;
     @FXML
     TableColumn<SessaoModel, String> nomeTabelaSessoes, horarioTabelaSessoes;
-    
+
     @FXML
     TableView<FilmeModel> tabelaFilmes;
     @FXML
@@ -55,23 +53,38 @@ public class AdminController {
     @FXML
     TableColumn<FilmeVendido, String> filmeTabelaVendas, qntTabelaVendas;
 
+
+
+    @FXML
+    TableView<ComboModel> tabelaCombos;
+    @FXML
+    TableColumn<ComboModel, String> precoTabelaCombos, itensComboTabelaCombos;
+
+
     @FXML
     DatePicker filtroData;
     ObservableList<FilmeModel> filmesLista = FXCollections.observableArrayList();
     ObservableList<SessaoModel> sessoesLista = FXCollections.observableArrayList();
     ObservableList<SalaModel> salasLista = FXCollections.observableArrayList();
+    ObservableList<ComboModel> combosLista = FXCollections.observableArrayList();
     public static SessaoModel sessaoSelecionada = null;
     public static FilmeModel filmeSelecionado = null;
-    
+
     public void initialize() {
         filmesLista.setAll(filmes.values());
         sessoesLista.setAll(sessoes);
         salasLista.setAll(salas.values());
+        combosLista.setAll(combos);
 
         // Sessoes
         tabelaSessoes.setItems(sessoes); // sessoesLista
         nomeTabelaSessoes.setCellValueFactory(data -> data.getValue().get("filme"));
         horarioTabelaSessoes.setCellValueFactory(data -> data.getValue().get("horario"));
+
+        //Salas
+        tabelaCombos.setItems(combos);
+        precoTabelaCombos.setCellValueFactory(data -> data.getValue().get("preco"));
+        itensComboTabelaCombos.setCellValueFactory(data -> data.getValue().get("itens"));
 
         // Filmes
         tabelaFilmes.setItems(filmesLista);
@@ -155,7 +168,8 @@ public class AdminController {
         // Vendas no dia
         filtroData.setValue(LocalDate.now());
         filtrarData();
-        
+
+
     }
     public void adicionarFilme(ActionEvent event) {
         try {

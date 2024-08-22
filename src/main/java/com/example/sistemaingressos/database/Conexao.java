@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexao {
-    private static final String url = "jdbc:mysql://localhost:3306/sistemaingressos";
+    private static final String url = "jdbc:mysql://localhost:3306/sitemaingressos2";
     private static final String user = "root";
     private static final String senha = "admin123";
 
@@ -15,14 +15,16 @@ public class Conexao {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            if (conn == null) {
+            if(conn == null) {
                 conn = DriverManager.getConnection(url, user, senha);
+
                 return conn;
             } else {
                 return conn;
             }
         } catch (SQLException e) {
             e.getSQLState();
+            System.out.println("Deu ruim");
             return null;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -30,5 +32,6 @@ public class Conexao {
             return null;
         }
     }
+
 
 }

@@ -10,22 +10,22 @@ public class VendaModel {
     private int id;
     private int qntIngressos;
     private LocalDate data;
-    private String nomeComprador;
+    private String cpf;
     private double precoTotal;
     private ArrayList<IngressoModel> ingressos;
 
-    public VendaModel(int id, int qntIngressos, LocalDate data, String nomeComprador, double precoTotal) {
+    public VendaModel(int id, int qntIngressos, LocalDate data, String cpf, double precoTotal) {
         this.id = id;
         this.qntIngressos = qntIngressos;
         this.data = data;
-        this.nomeComprador = nomeComprador;
+        this.cpf = cpf;
         this.precoTotal = precoTotal;
     }
 
-    public VendaModel(int qntIngressos, LocalDate data, String nomeComprador, double precoTotal) {
+    public VendaModel(int qntIngressos, LocalDate data, String cpf, double precoTotal) {
         this.qntIngressos = qntIngressos;
         this.data = data;
-        this.nomeComprador = nomeComprador;
+        this.cpf = cpf;
         this.precoTotal = precoTotal;
     }
     public static int addVenda(VendaModel venda) {
@@ -61,12 +61,12 @@ public class VendaModel {
         this.data = data;
     }
 
-    public String getNomeComprador() {
-        return nomeComprador;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setNomeComprador(String nomeComprador) {
-        this.nomeComprador = nomeComprador;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public double getPrecoTotal() {
@@ -83,5 +83,17 @@ public class VendaModel {
 
     public void setIngressos(ArrayList<IngressoModel> ingressos) {
         this.ingressos = ingressos;
+    }
+
+    @Override
+    public String toString() {
+        return "VendaModel{" +
+                "id=" + id +
+                ", qntIngressos=" + qntIngressos +
+                ", data=" + data +
+                ", cpf ='" + cpf + '\'' +
+                ", precoTotal=" + precoTotal +
+                ", ingressos=" + ingressos +
+                '}';
     }
 }

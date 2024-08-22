@@ -7,6 +7,7 @@ import java.sql.*;
 import static com.example.sistemaingressos.models.FilmeModel.filmes;
 
 public class FilmeDAO {
+
     public static void carregarFilmes(){
         try {
             String sql = "SELECT * FROM filmes";
@@ -20,10 +21,12 @@ public class FilmeDAO {
                         result.getInt("duracao"), result.getInt("faixa_etaria"));
                 filmes.put(f.getNome(), f);
             }
+
             ps.close();
             result.close();
-        } catch (SQLException ignored) {
-
+        } catch (SQLException e) {
+            System.err.println("Erro ao executar consulta SQL: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
