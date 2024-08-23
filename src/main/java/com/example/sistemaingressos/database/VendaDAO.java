@@ -10,7 +10,6 @@ public class VendaDAO {
         public static ArrayList<FilmeVendido> buscarVendasNoDia(LocalDate data) {
             ArrayList<FilmeVendido> vendas = new ArrayList<>();
             try {
-                System.out.println("teste");
                 Connection con = Conexao.getConexao();
                 String sql = "SELECT filme, COUNT(*) AS quantidade" +
                         " FROM ingressos i JOIN vendas v ON i.venda_id = v.id WHERE v.data = ? GROUP BY filme";

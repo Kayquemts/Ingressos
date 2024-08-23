@@ -28,7 +28,6 @@ public class Conexao {
             return null;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            System.out.println("teste : " + e);
             return null;
         }
     }

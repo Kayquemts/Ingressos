@@ -16,6 +16,7 @@ import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,8 +70,10 @@ public class AdminController {
     ObservableList<ComboModel> combosLista = FXCollections.observableArrayList();
     public static SessaoModel sessaoSelecionada = null;
     public static FilmeModel filmeSelecionado = null;
+    public static ComboModel comboSelecionado = null;
 
-    public void initialize() {
+    public void initialize() throws IOException, SQLException {
+
         filmesLista.setAll(filmes.values());
         sessoesLista.setAll(sessoes);
         salasLista.setAll(salas.values());
@@ -268,7 +271,6 @@ public class AdminController {
     }
 
     public void adicionarCombo(ActionEvent event) {
-        System.out.print("tetste");
         try {
             Scene scene = ((javafx.scene.Node) event.getSource()).getScene();
             scene.setRoot(new FXMLLoader(getClass().getResource("AddEditCombo.fxml")).load());

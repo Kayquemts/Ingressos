@@ -1,5 +1,6 @@
 package com.example.sistemaingressos.models;
 
+import com.example.sistemaingressos.database.ComboDAO;
 import com.example.sistemaingressos.database.Conexao;
 import com.example.sistemaingressos.database.SessaoDAO;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -34,8 +35,12 @@ public class SessaoModel {
     }
 
     public static void addSessao(SessaoModel sessao) {
-        SessaoDAO.adicionarSessao(sessao);
+        SessaoModel.setId(sessao, SessaoDAO.adicionarSessao(sessao));
         sessoes.add(sessao);
+
+    }
+    public static void setId(SessaoModel s,  int id) {
+        s.id = id;
     }
 
     public static void editarSessao(SessaoModel sessao) {

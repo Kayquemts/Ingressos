@@ -34,18 +34,24 @@ public class ComboDAO {
 
     }
 
-    public static void adicionarCombo(ComboModel combo) {
+    public static int adicionarCombo(ComboModel combo) {
         String sql = "INSERT INTO combos (itens_combo, preco_combo) VALUES (?, ?)";
 
-        try (Connection con = Conexao.getConexao();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+        try {
+            Connection con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setString(1, combo.getItens_combo());
             ps.setDouble(2, combo.getPreco_combo());
             ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) return rs.getInt(1);
+            ps.close();
+
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return -1;
     }
 
     public static void editarCombo(ComboModel novoCombo) {

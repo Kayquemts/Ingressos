@@ -53,7 +53,6 @@ public class DadosClienteController {
                 cliente.setCpf(clienteExistente.getCpf());
             }
         }else{
-            System.out.println("teste");
 
             cliente = new ClienteModel(
                     nomeCliente.getText(),

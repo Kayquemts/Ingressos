@@ -29,13 +29,13 @@ public class SessaoDAO {
         }
     }
 
-    public static void adicionarSessao(SessaoModel sessao){
+    public static int adicionarSessao(SessaoModel sessao){
         //nome, genero, duracao, faxa_estaria
         try {
             String sql = "INSERT INTO sessoes (filme, hora, minuto, sala_id, preco) values (?, ?, ?, ?, ?)";
 
             Connection con = Conexao.getConexao();
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, sessao.getStr("filme"));
             ps.setInt(2, sessao.getHora());
             ps.setInt(3, sessao.getMinuto());
@@ -43,10 +43,13 @@ public class SessaoDAO {
             ps.setDouble(5, sessao.getPreco());
 
             ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) return rs.getInt(1);
             ps.close();
-        } catch (SQLException ignored) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return -1;
     }
 
     public static void editarSessao(SessaoModel novaSessao){

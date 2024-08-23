@@ -19,8 +19,14 @@ public class ComboModel {
         this.preco_combo = preco_combo;
     }
 
+    public ComboModel(String itens_combo, double preco_combo) {
+        this.itens_combo = itens_combo;
+        this.preco_combo = preco_combo;
+    }
+
     public static void addCombo(ComboModel combo){
-        combos.add(combo.getId(), combo);
+        ComboModel.setId(combo, ComboDAO.adicionarCombo(combo));
+        combos.add(combo);
     }
 
     public static void carregarCombo(){
@@ -37,6 +43,10 @@ public class ComboModel {
 
     public int getId() {
         return id;
+    }
+
+    public static void setId(ComboModel m,  int id) {
+        m.id = id;
     }
 
     public void setId(int id) {
