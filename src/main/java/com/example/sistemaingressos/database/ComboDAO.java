@@ -62,24 +62,26 @@ public class ComboDAO {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, novoCombo.getItens_combo());
             ps.setDouble(2, novoCombo.getPreco_combo());
+            ps.setInt(3, novoCombo.getId());
 
             ps.executeUpdate();
             ps.close();
-
-        } catch (SQLException ignored) {
-
+            System.out.println("Combo editado com sucesso!");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
     public static void deletarCombo(ComboModel deletarCombo){
         try{
-            String sql = "Delete from combo where id_combo = ? ";
+            String sql = "Delete from combos where id_combo = ? ";
             Connection con = Conexao.getConexao();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, deletarCombo.getId());
             ps.execute();
             ps.close();
-        }catch (SQLException ignored){
+        }catch (SQLException e){
+            e.printStackTrace();
         }
     }
 

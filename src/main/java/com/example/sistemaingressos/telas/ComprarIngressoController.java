@@ -1,7 +1,11 @@
 package com.example.sistemaingressos.telas;
 
+import com.example.sistemaingressos.models.ComboModel;
 import com.example.sistemaingressos.models.IngressoModel;
 import com.example.sistemaingressos.models.VendaModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +27,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import static com.example.sistemaingressos.telas.SelecionarSessaoController.sessaoSelecionada;
 import static com.example.sistemaingressos.telas.SelectCadeiraController.cadeirasSelecionadas;
 import static com.example.sistemaingressos.telas.DadosClienteController.cliente;
+import static com.example.sistemaingressos.models.ComboModel.combos;
 
 public class ComprarIngressoController {
 
@@ -32,12 +38,14 @@ public class ComprarIngressoController {
     private VBox confortoList;
 
     @FXML
-    private CheckBox combo1, combo2, combo3;
+    TableView<ComboModel> tabelaCombos;
+    @FXML
+    TableColumn<ComboModel, String> precoTabelaCombos, itensComboTabelaCombos;
 
     Font textBig, textSmall;
     ArrayList<String> cadeirasConfortaveis = new ArrayList<>();
     private double totalIngressos = 0;
-    private List<CheckBox> comboList;
+    private final ObservableList<ComboModel> combosSelecionados = FXCollections.observableArrayList();
 
     public void initialize() {
         textBig = ((Label) dados.getChildren().get(0)).getFont();
@@ -60,20 +68,31 @@ public class ComprarIngressoController {
             confortoList.getChildren().add(btn);
         }
 
-        comboList = List.of(combo1, combo2, combo3);
-        comboList.forEach(combo -> combo.setOnAction(event -> atualizarTextoCompra()));
+        tabelaCombos.setItems(combos);
+        precoTabelaCombos.setCellValueFactory(data -> data.getValue().get("preco"));
+        itensComboTabelaCombos.setCellValueFactory(data -> data.getValue().get("itens"));
+
+        // Configuração para permitir seleção múltipla de combos
+        tabelaCombos.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        tabelaCombos.getSelectionModel().getSelectedItems().addListener((ListChangeListener<ComboModel>) change -> {
+            combosSelecionados.clear();
+            combosSelecionados.addAll(change.getList());
+            atualizarTextoCompra();
+        });
 
         atualizarTextoCompra();
     }
 
     @FXML
-    public void finalizarCompra(ActionEvent event) {
+    public void finalizarCompra(ActionEvent event) throws SQLException {
         boolean confirm = exibirConfirmar("Finalizar compra", "Deseja finalizar a compra?");
         System.out.println(totalIngressos);
         if (confirm) {
             VendaModel venda = new VendaModel(cadeirasSelecionadas.size(), LocalDate.now(), cliente.getCpf(), totalIngressos);
             System.out.println(venda);
             int vendaId = VendaModel.addVenda(venda);
+
+
             ArrayList<IngressoModel> ingressos = new ArrayList<>();
             for (String cadeira: cadeirasSelecionadas) {
                 ingressos.add(new IngressoModel(sessaoSelecionada.getFilme().getNome(), Integer.parseInt(cadeira),
@@ -84,6 +103,8 @@ public class ComprarIngressoController {
             venda.salvarIngressos();
             exibirAviso("Compra realizada com sucesso", "Você comprou os ingressos com sucesso!");
 
+            exibirConfirmar("teste", "testetestesteest");
+            venda.setCombos(new ArrayList<>(combosSelecionados), vendaId);
             try {
                 // Atualize a cena com a nova tela
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaSessoesTela.fxml"));
@@ -104,8 +125,8 @@ public class ComprarIngressoController {
         Label sessaoTexto = new Label("Dados da Sessão");
         sessaoTexto.setFont(textBig);
         sessaoTexto.setStyle("-fx-text-fill: #50a3ab;");
-
         labels.add(sessaoTexto);
+
         Label infoTexto = new Label(String.format(
                 "• Filme: %s\n• Sala: %d\n• Horário: %dh%dmin\n", sessaoSelecionada.getStr("filme"),
                 sessaoSelecionada.getSalaId(), sessaoSelecionada.getHora(), sessaoSelecionada.getMinuto()
@@ -113,7 +134,10 @@ public class ComprarIngressoController {
         infoTexto.setFont(textSmall);
         infoTexto.setStyle("-fx-text-fill: #50a3ab;");
         labels.add(infoTexto);
+
         totalIngressos = 0;
+
+        // Adiciona informações dos ingressos
         for (String cadeirasSelecionada : cadeirasSelecionadas) {
             double preco = sessaoSelecionada.getPreco() / (cliente.isEstudante() ? 2 : 1);
             String precoText = String.format("%.2f R$%s", preco, cliente.isEstudante() ? " (Meia)" : "(Integra)");
@@ -133,29 +157,28 @@ public class ComprarIngressoController {
 
             totalIngressos += preco + especialPreco;
         }
+
+        // Adiciona informações dos combos
+        if (!combosSelecionados.isEmpty()) {
+            Label comboTexto = new Label("Combos Selecionados:");
+            comboTexto.setFont(textBig);
+            comboTexto.setStyle("-fx-text-fill: #50a3ab;");
+            labels.add(comboTexto);
+
+            for (ComboModel combo : combosSelecionados) {
+                Label comboLabel = new Label(String.format("• %s - %.2f R$", combo.getItens_combo(), combo.getPreco_combo()));
+                comboLabel.setFont(textSmall);
+                comboLabel.setStyle("-fx-text-fill: #50a3ab;");
+                labels.add(comboLabel);
+
+                totalIngressos += combo.getPreco_combo();
+            }
+        }
+
         Label totalIngressosText = new Label(String.format("Ingressos: %.2f R$", totalIngressos));
         totalIngressosText.setFont(textBig);
         totalIngressosText.setStyle("-fx-text-fill: #50a3ab;");
         labels.add(2, totalIngressosText);
-
-        List<String> combosSelecionados = new ArrayList<>();
-        if (combo1.isSelected()) {
-            combosSelecionados.add("Combo 1: Refri + Chocolate (10% OFF)");
-            totalIngressos *= 0.9;
-        }
-        if (combo2.isSelected()) {
-            combosSelecionados.add("Combo 2: Refri + Pipoca (15% OFF)");
-            totalIngressos *= 0.85;
-        }
-        if (combo3.isSelected()) {
-            combosSelecionados.add("Combo 3: Refri + Chocolate + Pipoca (20% OFF)");
-            totalIngressos *= 0.8;
-        }
-
-        Label comboLabel = new Label("Combos Selecionados: " + String.join(", ", combosSelecionados));
-        comboLabel.setFont(textBig);
-        comboLabel.setStyle("-fx-text-fill: #50a3ab;");
-        labels.add(comboLabel);
 
         Label total = new Label("Total: " + String.format("%.2f R$", totalIngressos));
         total.setFont(textBig);

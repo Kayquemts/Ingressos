@@ -62,6 +62,7 @@ public class SelectCadeiraController {
                 return;
             }
             Scene scene = ((javafx.scene.Node) event.getSource()).getScene();
+            System.out.println("teste1");
             scene.setRoot(new FXMLLoader(getClass().getResource("ComprarAssentoECombo.fxml")).load());
         } catch (IOException e) {
             throw new RuntimeException(e);

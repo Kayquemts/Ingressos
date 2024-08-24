@@ -8,18 +8,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1110.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemaingressos.telas.AdminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1110.0" style="-fx-background-color: #1d313c; -fx-border-color: #f7723a; -fx-border-width: 10px;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemaingressos.telas.AdminController">
    <children>
-      <Button fx:id="adicionarFilme" layoutX="42.0" layoutY="280.0" mnemonicParsing="false" onAction="#adicionarFilme" text="Adicionar Filme" />
-      <Button fx:id="editarFilme" layoutX="155.0" layoutY="280.0" mnemonicParsing="false" onAction="#editarFilme" text="Editar Filme" />
-      <Button fx:id="removerFilme" layoutX="247.0" layoutY="280.0" mnemonicParsing="false" onAction="#removerFilme" text="Remover Filme" />
+      <Button fx:id="adicionarFilme" layoutX="42.0" layoutY="280.0" mnemonicParsing="false" onAction="#adicionarFilme" style="-fx-background-color: #fadac1;" text="Adicionar Filme" textFill="#64574d" />
+      <Button fx:id="editarFilme" layoutX="155.0" layoutY="280.0" mnemonicParsing="false" onAction="#editarFilme" style="-fx-background-color: #fadac1;" text="Editar Filme" textFill="#64574d" />
+      <Button fx:id="removerFilme" layoutX="247.0" layoutY="280.0" mnemonicParsing="false" onAction="#removerFilme" style="-fx-background-color: #fadac1;" text="Remover Filme" textFill="#64574d" />
       <TableView fx:id="tabelaTopVendas" layoutX="533.0" layoutY="65.0" prefHeight="198.0" prefWidth="200.0">
          <columns>
             <TableColumn fx:id="quantidadeTabelaTopVendas" prefWidth="84.800048828125" text="Quantidade" />
             <TableColumn fx:id="nomeTabelaTopVendas" prefWidth="113.5999755859375" text="Filme" />
          </columns>
       </TableView>
-      <Label layoutX="535.0" layoutY="24.0" text="Filmes mais vendidos">
+      <Label layoutX="535.0" layoutY="24.0" text="Filmes mais vendidos" textFill="#50a3ab">
          <font>
             <Font size="20.0" />
          </font>
@@ -30,9 +30,9 @@
             <TableColumn fx:id="qntTabelaVendas" prefWidth="94.4000244140625" text="Ingressos" />
          </columns>
       </TableView>
-      <Label layoutX="702.0" layoutY="339.0" text="Dia" />
-      <DatePicker fx:id="filtroData" layoutX="727.0" layoutY="335.0" onAction="#filtrarData" />
-      <Button fx:id="adicionarSessao" layoutX="41.0" layoutY="575.0" mnemonicParsing="false" onAction="#adicionarSessao" text="Adicionar Sessão" />
+      <Label layoutX="696.0" layoutY="327.0" text="Dia" textFill="#50a3ab" />
+      <DatePicker fx:id="filtroData" layoutX="723.0" layoutY="323.0" onAction="#filtrarData" />
+      <Button fx:id="adicionarSessao" layoutX="41.0" layoutY="575.0" mnemonicParsing="false" onAction="#adicionarSessao" style="-fx-background-color: #fadac1;" text="Adicionar Sessão" textFill="#64574d" />
       <TableView fx:id="tabelaFilmes" layoutX="43.0" layoutY="65.0" prefHeight="200.0" prefWidth="462.0">
          <columns>
             <TableColumn fx:id="nomeTabelaFilmes" prefWidth="128.79998397827148" text="Nome" />
@@ -41,7 +41,7 @@
             <TableColumn fx:id="duracaoTabelaFilmes" prefWidth="111.99993896484375" text="Duração" />
          </columns>
       </TableView>
-      <Label layoutX="47.0" layoutY="25.0" text="Lista de Filmes">
+      <Label layoutX="47.0" layoutY="25.0" text="Lista de Filmes" textFill="#50a3ab">
          <font>
             <Font size="19.0" />
          </font>
@@ -52,14 +52,14 @@
             <TableColumn fx:id="horarioTabelaSessoes" prefWidth="168.8000030517578" text="Horario" />
          </columns>
       </TableView>
-      <Button fx:id="editarSessao" layoutX="156.0" layoutY="575.0" mnemonicParsing="false" onAction="#editarSessao" text="Editar Sessão" />
-      <Button fx:id="deletarSessao" layoutX="252.0" layoutY="575.0" mnemonicParsing="false" onAction="#deletarSessao" text="Deletar Sessão" />
-      <Label layoutX="47.0" layoutY="319.0" text="Lista de Sessões">
+      <Button fx:id="editarSessao" layoutX="156.0" layoutY="575.0" mnemonicParsing="false" onAction="#editarSessao" style="-fx-background-color: #fadac1;" text="Editar Sessão" textFill="#64574d" />
+      <Button fx:id="deletarSessao" layoutX="252.0" layoutY="575.0" mnemonicParsing="false" onAction="#deletarSessao" style="-fx-background-color: #fadac1;" text="Deletar Sessão" textFill="#64574d" />
+      <Label layoutX="47.0" layoutY="319.0" text="Lista de Sessões" textFill="#50a3ab">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <Label layoutX="381.0" layoutY="319.0" text="Salas">
+      <Label layoutX="381.0" layoutY="319.0" text="Salas" textFill="#50a3ab">
          <font>
             <Font size="19.0" />
          </font>
@@ -71,20 +71,20 @@
             <TableColumn fx:id="editarTabelaSalas" prefWidth="77.59996337890624" text="Editar" />
          </columns>
       </TableView>
-      <Button fx:id="salvarSalas" layoutX="373.0" layoutY="575.0" mnemonicParsing="false" onAction="#salvarSalas" text="Salvar" />
-      <TableView layoutX="779.0" layoutY="65.0" prefHeight="200.0" prefWidth="282.0">
+      <Button fx:id="salvarSalas" layoutX="373.0" layoutY="575.0" mnemonicParsing="false" onAction="#salvarSalas" style="-fx-background-color: #fadac1;" text="Salvar" textFill="#64574d" />
+      <TableView fx:id="tabelaCombos" layoutX="779.0" layoutY="65.0" prefHeight="200.0" prefWidth="282.0">
          <columns>
-            <TableColumn minWidth="0.0" prefWidth="140.66668701171875" text="Preço" />
-            <TableColumn prefWidth="140.33331298828125" text="Itens_Combo" />
+            <TableColumn fx:id="precoTabelaCombos" minWidth="0.0" prefWidth="140.66668701171875" text="Preço" />
+            <TableColumn fx:id="itensComboTabelaCombos" prefWidth="140.33331298828125" text="Itens_Combo" />
          </columns>
       </TableView>
-      <Label layoutX="885.0" layoutY="26.0" text="Combos">
+      <Label layoutX="779.0" layoutY="24.0" text="Combos" textFill="#52a1ad">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="btn_add_combo" layoutX="797.0" layoutY="273.0" mnemonicParsing="false" onAction="#adicionarCombo" text="Adicionar" />
-      <Button layoutX="895.0" layoutY="272.0" mnemonicParsing="false" text="Editar" />
-      <Button layoutX="981.0" layoutY="272.0" mnemonicParsing="false" text="Deletar" />
+      <Button fx:id="btn_add_combo" layoutX="797.0" layoutY="273.0" mnemonicParsing="false" onAction="#adicionarCombo" style="-fx-background-color: #fadac1;" text="Adicionar" textFill="#64574d" />
+      <Button layoutX="895.0" layoutY="272.0" mnemonicParsing="false" onAction="#editarCombo" style="-fx-background-color: #fadac1;" text="Editar" textFill="#64574d" />
+      <Button layoutX="981.0" layoutY="272.0" mnemonicParsing="false" onAction="#deletarCombo" style="-fx-background-color: #fadac1;" text="Deletar" textFill="#64574d" />
    </children>
 </AnchorPane>

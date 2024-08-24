@@ -2,51 +2,37 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="935.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemaingressos.telas.ComprarIngressoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="935.0" style="-fx-background-color: #1c313e;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemaingressos.telas.ComprarIngressoController">
    <children>
-      <Label layoutX="37.0" layoutY="40.0" prefHeight="103.0" prefWidth="238.0" text="Selecione os assentos que devem possuir mais conforto:" wrapText="true">
+      <Label layoutX="37.0" layoutY="40.0" prefHeight="103.0" prefWidth="301.0" text="Selecione os assentos que devem possuir mais conforto:" textFill="#f6723a" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="37.0" layoutY="276.0" prefHeight="103.0" prefWidth="173.0" text="Selecione seu combo(opcional):" wrapText="true">
+      <Label layoutX="37.0" layoutY="276.0" prefHeight="103.0" prefWidth="301.0" text="Selecione seu combo(opcional):" textFill="#f6723a" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <RadioButton fx:id="combo1" layoutX="37.0" layoutY="369.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="316.0" text="Combo 1: Refri + Chocolate &#10;(10% OFF)" wrapText="true">
+      <Label layoutX="426.0" layoutY="40.0" prefHeight="36.0" prefWidth="494.0" text="DADOS DA COMPRA" textFill="#f6723a">
          <font>
-            <Font size="15.0" />
-         </font>
-      </RadioButton>
-      <RadioButton fx:id="combo2" layoutX="37.0" layoutY="437.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="316.0" text="Combo2: Refri + Pipoca&#10;(15% OFF)" wrapText="true">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </RadioButton>
-      <RadioButton fx:id="combo3" layoutX="37.0" layoutY="496.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="316.0" text="Combo 3: Refri + Chocolate + Pipoca &#10;(20% OFF)" wrapText="true">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </RadioButton>
-      <Label layoutX="426.0" layoutY="40.0" prefHeight="36.0" prefWidth="494.0" text="Dados da Compra">
-         <font>
-            <Font size="28.0" />
+            <Font name="System Bold" size="28.0" />
          </font>
       </Label>
       <VBox fx:id="dados" layoutX="426.0" layoutY="100.0" prefHeight="279.0" prefWidth="494.0">
          <children>
-            <Label prefHeight="45.0" prefWidth="494.0" text="...">
+            <Label prefHeight="45.0" prefWidth="494.0" text="..." textFill="#50a3ab">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label prefHeight="31.0" prefWidth="494.0" text="..." wrapText="true">
+            <Label prefHeight="31.0" prefWidth="494.0" text="..." textFill="#50a3ab" wrapText="true">
                <font>
                   <Font size="15.0" />
                </font>
@@ -54,10 +40,17 @@
          </children>
       </VBox>
       <VBox fx:id="confortoList" layoutX="37.0" layoutY="143.0" prefHeight="147.0" prefWidth="258.0" />
-      <Button layoutX="720.0" layoutY="555.0" mnemonicParsing="false" onAction="#finalizarCompra" text="Finalizar Compra">
+      <Button layoutX="720.0" layoutY="555.0" mnemonicParsing="false" onAction="#finalizarCompra" style="-fx-background-color: #fadac1;" text="Finalizar Compra" textFill="#64574d">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
+      <TableView fx:id="tabelaCombos" layoutX="30.0" layoutY="369.0" prefHeight="200.0" prefWidth="301.0">
+        <columns>
+          <TableColumn fx:id="itensComboTabelaCombos" prefWidth="138.0" text="Combo" />
+          <TableColumn fx:id="precoTabelaCombos" prefWidth="162.0" text="Preço" />
+        </columns>
+      </TableView>
+      <Label layoutX="30.0" layoutY="591.0" text="Segure Ctrl e clique no combo escolhido" textFill="#50a3ab" />
    </children>
 </AnchorPane>

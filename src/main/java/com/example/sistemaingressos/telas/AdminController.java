@@ -1,5 +1,6 @@
 package com.example.sistemaingressos.telas;
 
+import com.example.sistemaingressos.MainApplication;
 import com.example.sistemaingressos.database.*;
 import com.example.sistemaingressos.models.*;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -276,6 +277,34 @@ public class AdminController {
             scene.setRoot(new FXMLLoader(getClass().getResource("AddEditCombo.fxml")).load());
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void deletarCombo(ActionEvent event){
+        comboSelecionado = tabelaCombos.getSelectionModel().getSelectedItem();
+        if(comboSelecionado != null) {
+            combos.remove(comboSelecionado);
+            combosLista.remove(comboSelecionado);
+            ComboDAO.deletarCombo(comboSelecionado);
+        } else {
+            exibirErro("Erro", "Selecione o combo a ser deletada");
+        }
+    }
+
+
+
+    public void editarCombo(ActionEvent event) {
+        System.out.print("teste");
+        comboSelecionado = tabelaCombos.getSelectionModel().getSelectedItem();
+        if (comboSelecionado != null) {
+            try {
+                Scene scene = ((javafx.scene.Node) event.getSource()).getScene();
+                scene.setRoot(new FXMLLoader(getClass().getResource("AddEditCombo.fxml")).load());
+            }catch (IOException e){
+                throw new RuntimeException(e);
+            }
+        } else {
+            exibirErro("Erro", "Selecione o combo a ser editado");
         }
     }
 

@@ -34,7 +34,7 @@ public class ComboModel {
     }
 
     public static void editarCombo(ComboModel combo){
-        // Supondo que a edição é feita diretamente na map, não há necessidade de código extra aqui
+        ComboDAO.editarCombo(combo);
     }
 
     public static void deletarCombo(ComboModel combo){

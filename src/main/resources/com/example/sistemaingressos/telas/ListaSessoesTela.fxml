@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="935.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemaingressos.telas.SelecionarSessaoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="935.0" style="-fx-background-color: #1c313e; -fx-border-color: #f7723a; -fx-border-width: 10px;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemaingressos.telas.SelecionarSessaoController">
    <children>
-      <Label layoutX="41.0" layoutY="69.0" text="Lista de Sessões">
+      <Label layoutX="41.0" layoutY="32.0" text="LISTA DE SESSÕES" textFill="#f6723a">
          <font>
-            <Font size="35.0" />
+            <Font name="System Bold" size="35.0" />
          </font>
       </Label>
       <TableView fx:id="tabelaSessoes" layoutX="42.0" layoutY="215.0" prefHeight="382.0" prefWidth="576.0">
@@ -25,32 +25,32 @@
             <TableColumn fx:id="precoTabelaSessoes" prefWidth="143.20001220703125" text="Preço" />
         </columns>
       </TableView>
-      <Button fx:id="comprarIngressos" layoutX="794.0" layoutY="555.0" mnemonicParsing="false" onAction="#comprarIngressos" text="Comprar">
+      <Button fx:id="comprarIngressos" layoutX="794.0" layoutY="555.0" mnemonicParsing="false" onAction="#comprarIngressos" style="-fx-background-color: #fadac1;" text="Comprar" textFill="#64574d">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Label layoutX="597.0" layoutY="26.0" prefHeight="36.0" prefWidth="180.0" text="Logado como:">
+      <Label layoutX="597.0" layoutY="26.0" prefHeight="36.0" prefWidth="180.0" text="Logado como:" textFill="#50a3ab">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="editarDadosCliente" layoutX="597.0" layoutY="69.0" mnemonicParsing="false" onAction="#editarDadosCliente" text="Editar dados">
+      <Button fx:id="editarDadosCliente" layoutX="597.0" layoutY="69.0" mnemonicParsing="false" onAction="#editarDadosCliente" style="-fx-background-color: #fadac1;" text="Editar dados" textFill="#64574d">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Label fx:id="logadoNome" layoutX="746.0" layoutY="32.0" prefHeight="25.0" prefWidth="174.0" text="...">
+      <Label fx:id="logadoNome" layoutX="746.0" layoutY="32.0" prefHeight="25.0" prefWidth="174.0" text="..." textFill="#50a3ab">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="41.0" layoutY="139.0" text="Pesquisar:">
+      <Label layoutX="41.0" layoutY="139.0" text="Pesquisar:" textFill="#50a3ab">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
       <TextField fx:id="barraPesquisa" layoutX="201.0" layoutY="142.0" onKeyTyped="#buscar" prefHeight="36.0" prefWidth="174.0" />
-      <ChoiceBox fx:id="selectFiltro" layoutX="392.0" layoutY="147.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="selectFiltro" layoutX="392.0" layoutY="147.0" prefWidth="150.0" style="-fx-background-color: #fadac1;" />
    </children>
 </AnchorPane>

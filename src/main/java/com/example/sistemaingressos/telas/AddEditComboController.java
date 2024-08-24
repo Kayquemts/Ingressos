@@ -18,6 +18,7 @@ import com.example.sistemaingressos.models.ComboModel;
 import static com.example.sistemaingressos.models.ComboModel.combos;
 import static com.example.sistemaingressos.models.FilmeModel.filmes;
 import static com.example.sistemaingressos.telas.AdminController.comboSelecionado;
+import static com.example.sistemaingressos.telas.AdminController.filmeSelecionado;
 
 public class AddEditComboController {
 
@@ -28,12 +29,11 @@ public class AddEditComboController {
     private TextField nomeCombo, valorCombo;
 
     public void initialize() {
-        /*
+
         if (comboSelecionado != null) {
-            nomeCombo.setText(comboSelecionado.getNome());
-            descricaoCombo.setText(comboSelecionado.getDescricao());
-            valorCombo.setText(String.valueOf(comboSelecionado.getValor()));
-        }*/
+            nomeCombo.setText(comboSelecionado.getItens_combo());
+            valorCombo.setText(String.valueOf(comboSelecionado.getPreco_combo()));
+        }
         System.out.println(comboLabel.getText());
     }
 
@@ -77,12 +77,24 @@ public class AddEditComboController {
 
 
             }else {
-                System.out.println("teste2");
+                confirm = exibirConfirmar("Salvar alterações", "Deseja salvar as mudanças?");
+                if (confirm) {
+                    comboSelecionado.setItens_combo(nome);
+                    comboSelecionado.setPreco_combo(valorD);
+                    ComboModel.editarCombo(comboSelecionado);
+                    comboSelecionado = null;
+                }
             }
         }catch (Exception e) {
             e.printStackTrace();
         }
 
+        try {
+            Scene scene = ((javafx.scene.Node) event.getSource()).getScene();
+            scene.setRoot(new FXMLLoader(getClass().getResource("AdminTela.fxml")).load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }

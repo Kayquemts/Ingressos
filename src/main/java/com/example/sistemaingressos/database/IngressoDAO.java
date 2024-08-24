@@ -56,13 +56,13 @@ public class IngressoDAO {
         }
     }
 
-    public static void addIngresso(IngressoModel novoIngresso) {
+    public static int addIngresso(IngressoModel novoIngresso) {
         try {
             String sql = "INSERT INTO ingressos (filme, sessao_id, sala_id, cadeira_id, cadeira_especial," +
                     " venda_id, preco_final) values(?,?,?,?,?,?,?)";
 
             Connection con = Conexao.getConexao();
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
 
             ps.setString(1, novoIngresso.getFilme());
             ps.setInt(2, novoIngresso.getSessaoId());
@@ -74,10 +74,13 @@ public class IngressoDAO {
 
 
             ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) return rs.getInt(1);
             ps.close();
-        } catch (SQLException ignored) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return -1;
     }
 
 }

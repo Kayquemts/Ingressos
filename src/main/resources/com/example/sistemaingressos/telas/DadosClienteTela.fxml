@@ -7,40 +7,46 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="925.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemaingressos.telas.DadosClienteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="925.0" style="-fx-background-color: #1c313e; -fx-border-color: #f7723a; -fx-border-width: 10px;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemaingressos.telas.DadosClienteController">
    <children>
-      <TextField fx:id="nomeCliente" layoutX="289.0" layoutY="160.0" prefHeight="66.0" prefWidth="533.0">
+      <TextField fx:id="nomeCliente" layoutX="333.0" layoutY="159.0" prefHeight="46.0" prefWidth="494.0">
          <font>
             <Font size="15.0" />
          </font></TextField>
-      <CheckBox fx:id="estudante" layoutX="126.0" layoutY="398.0" mnemonicParsing="false" text="Estudante?">
+      <CheckBox fx:id="estudante" layoutX="121.0" layoutY="396.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="58.0" prefWidth="266.0" text="Estudante?" textFill="#50a3ab">
          <font>
-            <Font size="45.0" />
+            <Font size="40.0" />
          </font>
       </CheckBox>
-      <Label layoutX="121.0" layoutY="153.0" text="Nome:">
+      <Label layoutX="121.0" layoutY="153.0" prefHeight="28.0" prefWidth="175.0" text="Nome:" textFill="#50a3ab">
          <font>
-            <Font size="50.0" />
+            <Font size="40.0" />
          </font>
       </Label>
-      <Label layoutX="127.0" layoutY="282.0" text="Idade:">
+      <Label layoutX="121.0" layoutY="305.0" text="Idade:" textFill="#50a3ab">
          <font>
-            <Font size="50.0" />
+            <Font size="40.0" />
          </font>
       </Label>
-      <TextField fx:id="idadeCliente" layoutX="289.0" layoutY="295.0" prefHeight="46.0" prefWidth="90.0">
+      <TextField fx:id="idadeCliente" layoutX="333.0" layoutY="319.0" prefHeight="46.0" prefWidth="90.0">
          <font>
             <Font size="15.0" />
          </font></TextField>
-      <Button layoutX="717.0" layoutY="504.0" mnemonicParsing="false" onAction="#salvarDadosCliente" prefHeight="10.0" prefWidth="147.0" text="Salvar">
+      <Label layoutX="218.0" layoutY="51.0" text="INSIRA SEUS DADOS" textFill="#f6723a">
          <font>
-            <Font size="30.0" />
-         </font>
-      </Button>
-      <Label layoutX="274.0" layoutY="52.0" text="Insira seus dados">
-         <font>
-            <Font size="50.0" />
+            <Font name="System Bold" size="50.0" />
          </font>
       </Label>
+      <Label layoutX="121.0" layoutY="224.0" prefHeight="58.0" prefWidth="110.0" text="CPF:" textFill="#50a3ab">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cpf" layoutX="333.0" layoutY="241.0" prefHeight="46.0" prefWidth="494.0" />
+      <Button layoutX="752.0" layoutY="559.0" mnemonicParsing="false" onAction="#salvarDadosCliente" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #fadac1;" text="Entrar" textFill="#64574d">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

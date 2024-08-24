@@ -2,7 +2,9 @@ package com.example.sistemaingressos.models;
 
 import com.example.sistemaingressos.database.IngressoDAO;
 import com.example.sistemaingressos.database.VendaDAO;
+import com.example.sistemaingressos.database.VendaComboDAO;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -35,6 +37,19 @@ public class VendaModel {
         for (IngressoModel ingresso: ingressos) {
             IngressoDAO.addIngresso(ingresso);
         }
+    }
+
+    public void setCombos(ArrayList<ComboModel> combos, int idVenda) throws SQLException {
+        System.out.println("------");
+        for (ComboModel item : combos) {
+            System.out.println(item);
+        }
+        System.out.println("----");
+
+        for (ComboModel item : combos) {
+            VendaComboDAO.adicionarIngressoCombo(item.getId(), idVenda);
+        }
+
     }
 
     public int getId() {

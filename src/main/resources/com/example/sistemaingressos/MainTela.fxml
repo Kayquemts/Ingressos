@@ -24,12 +24,12 @@
          </font></Button>
       <ImageView fitHeight="128.0" fitWidth="231.0" layoutX="73.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../java/com/example/sistemaingressos/telas/images/adm.png" />
+            <Image url="@telas/adm.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="128.0" fitWidth="133.0" layoutX="130.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../java/com/example/sistemaingressos/telas/images/cliente.png" />
+            <Image url="@telas/cliente.png" />
          </image>
       </ImageView>
    </children>
