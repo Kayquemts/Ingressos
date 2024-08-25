@@ -294,7 +294,7 @@ public class AdminController {
 
 
     public void editarCombo(ActionEvent event) {
-        System.out.print("teste");
+
         comboSelecionado = tabelaCombos.getSelectionModel().getSelectedItem();
         if (comboSelecionado != null) {
             try {

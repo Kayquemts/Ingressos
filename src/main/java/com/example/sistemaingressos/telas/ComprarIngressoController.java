@@ -89,7 +89,6 @@ public class ComprarIngressoController {
         System.out.println(totalIngressos);
         if (confirm) {
             VendaModel venda = new VendaModel(cadeirasSelecionadas.size(), LocalDate.now(), cliente.getCpf(), totalIngressos);
-            System.out.println(venda);
             int vendaId = VendaModel.addVenda(venda);
 
 
@@ -103,7 +102,6 @@ public class ComprarIngressoController {
             venda.salvarIngressos();
             exibirAviso("Compra realizada com sucesso", "Você comprou os ingressos com sucesso!");
 
-            exibirConfirmar("teste", "testetestesteest");
             venda.setCombos(new ArrayList<>(combosSelecionados), vendaId);
             try {
                 // Atualize a cena com a nova tela

@@ -24,7 +24,6 @@ public class Conexao {
             }
         } catch (SQLException e) {
             e.getSQLState();
-            System.out.println("Deu ruim");
             return null;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

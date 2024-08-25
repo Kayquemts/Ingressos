@@ -11,10 +11,6 @@ public class VendaComboDAO {
 
 
     public static void adicionarIngressoCombo(int idCombo, int idVenda) throws SQLException {
-        System.out.println("ID COMBO: "+idCombo);
-        System.out.println("ID VENDA: "+idVenda);
-
-
         String sql = "INSERT INTO venda_combo (id_venda, id_combos) VALUES (?, ?)";
 
         try {

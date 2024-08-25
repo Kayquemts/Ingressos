@@ -56,4 +56,14 @@ public class ClienteModel {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+    @Override
+    public String toString() {
+        return "ClienteModel{" +
+                "nome='" + nome + '\'' +
+                ", idade=" + idade +
+                ", estudante=" + estudante +
+                ", cpf='" + cpf + '\'' +
+                '}';
+    }
 }

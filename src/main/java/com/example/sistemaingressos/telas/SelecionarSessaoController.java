@@ -63,7 +63,7 @@ public class SelecionarSessaoController {
     public void editarDadosCliente(ActionEvent event) {
         try {
             Scene scene = ((javafx.scene.Node) event.getSource()).getScene();
-            scene.setRoot(new FXMLLoader(getClass().getResource("DadosClienteTela.fxml")).load());
+            scene.setRoot(new FXMLLoader(getClass().getResource("EditarDados.fxml")).load());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

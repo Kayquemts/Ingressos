@@ -66,7 +66,6 @@ public class ComboDAO {
 
             ps.executeUpdate();
             ps.close();
-            System.out.println("Combo editado com sucesso!");
         } catch (SQLException e) {
             e.printStackTrace();
         }

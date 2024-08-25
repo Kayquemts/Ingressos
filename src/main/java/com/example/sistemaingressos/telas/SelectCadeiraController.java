@@ -22,7 +22,7 @@ public class SelectCadeiraController {
 
     public static ArrayList<String> cadeirasSelecionadas = new ArrayList<>();
 
-    private int qnt_cadeiras_disponiveis = 3;
+    private int qnt_cadeiras_disponiveis = 1;
 
     public void initialize() {
         int qnt_cadeiras = salas.get(sessaoSelecionada.getSalaId()).getQntMaxPessoas(), qnt_cadeiras_por_fila = 10;
@@ -46,11 +46,13 @@ public class SelectCadeiraController {
         if (cadeirasSelecionadas.contains(n_cadeira)) {
             cadeirasSelecionadas.remove(n_cadeira);
             cadeira.getStyleClass().remove("selecionada");
+
         } else if (cadeirasSelecionadas.size() < qnt_cadeiras_disponiveis) {
             cadeirasSelecionadas.add(n_cadeira);
             cadeira.getStyleClass().add("selecionada");
+
         } else {
-            exibirErro("Quantidade máxima selecionada", "O limite é de 3 cadeiras, caso queira mudar clique na cadeira para desmarcar.");
+            exibirErro("Quantidade máxima selecionada", "O limite é de "+  qnt_cadeiras_disponiveis +" cadeiras, caso queira mudar clique na cadeira para desmarcar.");
         }
     }
 
@@ -62,7 +64,6 @@ public class SelectCadeiraController {
                 return;
             }
             Scene scene = ((javafx.scene.Node) event.getSource()).getScene();
-            System.out.println("teste1");
             scene.setRoot(new FXMLLoader(getClass().getResource("ComprarAssentoECombo.fxml")).load());
         } catch (IOException e) {
             throw new RuntimeException(e);

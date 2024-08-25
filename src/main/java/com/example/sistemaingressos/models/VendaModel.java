@@ -40,12 +40,6 @@ public class VendaModel {
     }
 
     public void setCombos(ArrayList<ComboModel> combos, int idVenda) throws SQLException {
-        System.out.println("------");
-        for (ComboModel item : combos) {
-            System.out.println(item);
-        }
-        System.out.println("----");
-
         for (ComboModel item : combos) {
             VendaComboDAO.adicionarIngressoCombo(item.getId(), idVenda);
         }
