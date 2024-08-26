@@ -38,7 +38,7 @@
         </rowConstraints>
       </GridPane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="134.0" layoutX="359.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="217.0" />
-      <Label layoutX="14.0" layoutY="26.0" text="Selecione até 3 cadeiras" textFill="#50a3ab">
+      <Label layoutX="14.0" layoutY="26.0" text="Selecione a cadeira desejada" textFill="#50a3ab">
          <font>
             <Font size="20.0" />
          </font>
@@ -53,5 +53,10 @@
             <Image url="@tela.png" />
          </image>
       </ImageView>
+      <Button layoutX="806.0" layoutY="26.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="37.0" prefWidth="86.0" style="-fx-background-color: #fadac1;" text="Cancelar" textFill="#64574d">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -100,7 +100,7 @@ public class ComprarIngressoController {
             }
             venda.setIngressos(ingressos);
             venda.salvarIngressos();
-            exibirAviso("Compra realizada com sucesso", "Você comprou os ingressos com sucesso!");
+            exibirAviso("Compra realizada com sucesso", "Você comprou o ingresso com sucesso!");
 
             venda.setCombos(new ArrayList<>(combosSelecionados), vendaId);
             try {

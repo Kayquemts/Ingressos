@@ -18,11 +18,11 @@
       </Label>
       <TableView fx:id="tabelaSessoes" layoutX="42.0" layoutY="215.0" prefHeight="382.0" prefWidth="576.0">
         <columns>
-          <TableColumn fx:id="nomeTabelaSessoes" prefWidth="72.0" text="Nome" />
-          <TableColumn fx:id="classificacaoTabelaSessoes" prefWidth="89.59994506835938" text="Classificação" />
-            <TableColumn fx:id="generoTabelaSessoes" minWidth="0.0" prefWidth="117.59999084472656" text="Gênero" />
-            <TableColumn fx:id="horarioTabelaSessoes" minWidth="0.0" prefWidth="152.0" text="Sessão" />
-            <TableColumn fx:id="precoTabelaSessoes" prefWidth="143.20001220703125" text="Preço" />
+          <TableColumn fx:id="nomeTabelaSessoes" prefWidth="181.0" text="Nome" />
+          <TableColumn fx:id="classificacaoTabelaSessoes" prefWidth="83.0" text="Classificação" />
+            <TableColumn fx:id="generoTabelaSessoes" minWidth="0.0" prefWidth="105.0" text="Gênero" />
+            <TableColumn fx:id="horarioTabelaSessoes" minWidth="0.0" prefWidth="101.0" text="Sessão" />
+            <TableColumn fx:id="precoTabelaSessoes" prefWidth="106.0" text="Preço" />
         </columns>
       </TableView>
       <Button fx:id="comprarIngressos" layoutX="794.0" layoutY="555.0" mnemonicParsing="false" onAction="#comprarIngressos" style="-fx-background-color: #fadac1;" text="Comprar" textFill="#64574d">

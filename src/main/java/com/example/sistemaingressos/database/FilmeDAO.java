@@ -39,8 +39,8 @@ public class FilmeDAO {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, filme.getNome());
             ps.setString(2, filme.getGenero());
-            ps.setInt(3, filme.getDuracao());
-            ps.setInt(4, filme.getFaixaEtaria());
+            ps.setInt(3, filme.getFaixaEtaria());
+            ps.setInt(4, filme.getDuracao());
 
             ps.executeUpdate();
             ps.close();

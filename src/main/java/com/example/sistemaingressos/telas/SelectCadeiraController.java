@@ -5,10 +5,12 @@ import com.example.sistemaingressos.models.IngressoModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 import static com.example.sistemaingressos.models.SalaModel.salas;
 import static com.example.sistemaingressos.telas.SelecionarSessaoController.sessaoSelecionada;
@@ -69,6 +71,21 @@ public class SelectCadeiraController {
             throw new RuntimeException(e);
         }
     }
+
+    public void cancelar(ActionEvent event){
+        try{
+            cadeirasSelecionadas = new ArrayList<>();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaSessoesTela.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+
+        }catch (Exception e){
+
+        }
+    }
+
+
     private void exibirErro(String titulo, String mensagem) {
         Alert alerta = new Alert(Alert.AlertType.ERROR);
         alerta.setTitle(titulo);

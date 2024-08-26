@@ -8,7 +8,7 @@ import static com.example.sistemaingressos.models.SalaModel.salas;
 public class SalaDAO {
     public static void carregarSalas() {
         try {
-            String sql = "SELECT * FROM salas";
+            String sql = "SELECT * FROM salas;";
 
             Connection con = Conexao.getConexao();
             PreparedStatement ps = con.prepareStatement(sql);

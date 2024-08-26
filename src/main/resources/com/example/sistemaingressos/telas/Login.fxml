@@ -26,7 +26,13 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Button layoutX="552.0" layoutY="429.0" mnemonicParsing="false" onAction="#entrar" prefHeight="40.0" prefWidth="221.0" style="-fx-background-color: #fbe1cd;" text="Entrar" textFill="#64574d" />
-      <Button layoutX="331.0" layoutY="429.0" mnemonicParsing="false" onAction="#cadastro" prefHeight="40.0" prefWidth="211.0" style="-fx-background-color: #c8ae9a;" text="Se cadastrar" />
+      <Button layoutX="552.0" layoutY="429.0" mnemonicParsing="false" onAction="#entrar" prefHeight="40.0" prefWidth="221.0" style="-fx-background-color: #fbe1cd;" text="Entrar" textFill="#64574d">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button layoutX="331.0" layoutY="429.0" mnemonicParsing="false" onAction="#cadastro" prefHeight="40.0" prefWidth="211.0" style="-fx-background-color: #c8ae9a;" text="Cadastra-se">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
    </children>
 </AnchorPane>

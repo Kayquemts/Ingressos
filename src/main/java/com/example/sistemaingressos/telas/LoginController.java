@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.LoadException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -37,7 +38,7 @@ public class LoginController {
         String pass_cliente = pass.getText();
 
         if (cpf_cliente == null || cpf_cliente.isEmpty() || pass_cliente == null || pass_cliente.isEmpty()) {
-            System.out.println("Por favor, preencha o CPF e a senha.");
+            exibirErro("Dados faltantes", "Por favor, preencha o CPF e a senha.");
             return;
         }
 
@@ -46,7 +47,6 @@ public class LoginController {
             cliente = ClienteDAO.getClienteByCpfAndSenha(cpf_cliente, BCrypt.hashpw(pass_cliente, "$2a$10$C5oM1KJbL/3iq4U8y1x8me"));
 
             if (cliente != null) {
-                System.out.println(cliente);
                 // Atualize a cena com a nova tela
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaSessoesTela.fxml"));
                 Parent root = loader.load();
@@ -55,7 +55,7 @@ public class LoginController {
 
 
             } else {
-                System.out.println("CPF ou senha incorretos. Tente novamente.");
+                exibirErro("Digite novamente!", "CPF ou senha incorretos. Tente novamente.");
 
             }
         } catch (LoadException ld){
@@ -76,5 +76,15 @@ public class LoginController {
             throw new RuntimeException(e);
         }
 
+    }
+
+    private void exibirErro(String titulo, String mensagem) {
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensagem);
+        alerta.setHeight(70);
+        alerta.setWidth(120);
+        alerta.showAndWait();
     }
 }

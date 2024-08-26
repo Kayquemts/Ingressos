@@ -7,60 +7,60 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="935.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemaingressos.telas.AddEditFilmeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1110.0" style="-fx-background-color: #1c313e; -fx-border-color: #f7723a; -fx-border-width: 10px;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemaingressos.telas.AddEditFilmeController">
    <children>
-      <Label layoutX="330.0" layoutY="57.0" text="Dados do Filme">
+      <Label layoutX="382.0" layoutY="40.0" prefHeight="58.0" prefWidth="345.0" text="DADOS DO FILME" textFill="#f6723a">
          <font>
-            <Font size="40.0" />
+            <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <Label layoutX="54.0" layoutY="182.0" text="Nome:">
-         <font>
-            <Font size="35.0" />
-         </font>
-      </Label>
-      <Label layoutX="54.0" layoutY="260.0" text="Gênero:">
+      <Label layoutX="331.0" layoutY="157.0" text="Nome:" textFill="#50a3ab">
          <font>
             <Font size="35.0" />
          </font>
       </Label>
-      <Label layoutX="54.0" layoutY="346.0" text="Duração:">
+      <Label layoutX="331.0" layoutY="219.0" text="Gênero:" textFill="#50a3ab">
          <font>
             <Font size="35.0" />
          </font>
       </Label>
-      <Label layoutX="54.0" layoutY="422.0" prefHeight="51.0" prefWidth="377.0" text="Classificação Indicativa:">
+      <Label layoutX="331.0" layoutY="283.0" text="Duração:" textFill="#50a3ab">
          <font>
             <Font size="35.0" />
          </font>
       </Label>
-      <TextField fx:id="nomeFilme" layoutX="175.0" layoutY="192.0" prefHeight="37.0" prefWidth="250.0" promptText="Ex.: Batman">
+      <Label layoutX="333.0" layoutY="350.0" prefHeight="51.0" prefWidth="203.0" text="Classificação:" textFill="#50a3ab">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nomeFilme" layoutX="555.0" layoutY="166.0" prefHeight="37.0" prefWidth="223.0" promptText="Ex.: Batman">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="generoFilme" layoutX="205.0" layoutY="272.0" prefHeight="37.0" prefWidth="223.0" promptText="Ex.: Ação, Comédia">
+      <TextField fx:id="generoFilme" layoutX="555.0" layoutY="228.0" prefHeight="37.0" prefWidth="223.0" promptText="Ex.: Ação, Comédia">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="duracaoFilme" layoutX="217.0" layoutY="354.0" prefHeight="37.0" prefWidth="78.0" promptText="Ex.: 60">
+      <TextField fx:id="duracaoFilme" layoutX="555.0" layoutY="290.0" prefHeight="37.0" prefWidth="78.0" promptText="Ex.: 60">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <ChoiceBox fx:id="classificacaoSelect" layoutX="432.0" layoutY="435.0" prefHeight="32.0" prefWidth="164.0" />
-      <Label layoutX="300.0" layoutY="357.0" text="min">
+      <ChoiceBox fx:id="classificacaoSelect" layoutX="558.0" layoutY="360.0" prefHeight="32.0" prefWidth="223.0" />
+      <Label layoutX="640.0" layoutY="292.0" text="min" textFill="#50a3ab">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <Button fx:id="salvarFilme" layoutX="770.0" layoutY="551.0" mnemonicParsing="false" onAction="#salvarFilme" prefHeight="22.0" prefWidth="103.0" text="Salvar">
+      <Button fx:id="salvarFilme" layoutX="676.0" layoutY="482.0" mnemonicParsing="false" onAction="#salvarFilme" prefHeight="22.0" prefWidth="103.0" style="-fx-background-color: #fadac1;" text="Salvar" textFill="#64574d">
          <font>
             <Font size="21.0" />
          </font>
       </Button>
-      <Button layoutX="637.0" layoutY="551.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar">
+      <Button layoutX="540.0" layoutY="482.0" mnemonicParsing="false" onAction="#cancelar" style="-fx-background-color: #fadac1;" text="Cancelar" textFill="#64574d">
          <font>
             <Font size="21.0" />
          </font>
